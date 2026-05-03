@@ -236,8 +236,9 @@ def get_itens():
 
     if ports:
         for porta in ports:
-            portas_dict[porta.device] = porta.description
-            lista_itens.append(f"{porta.device} - {porta.description}")
+            if porta.description not in ["n/a", "N/A"]:
+                portas_dict[porta.device] = porta.description
+                lista_itens.append(f"{porta.device} - {porta.description}")
 
     return lista_itens, portas_dict
 
